@@ -1,0 +1,6 @@
+flutter_intl:                                   # Add this line
+  enabled: true                                 # Add this line
+  class_name: I10n                              # Add this line
+  main_locale: en                               # Add this line
+  arb_dir: lib/core/localization/l10n           # Add this line
+  output_dir: lib/core/localization/generated   # Add this line
