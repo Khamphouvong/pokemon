@@ -16,7 +16,7 @@ class PokedexCubit extends Cubit<PokedexState> {
 
   Future<void> getPokedex(int limit, int offset) async {
     emit(const PokedexState.loading());
-    final request = await getPokedexUseCase(HaveParams(limit, offset));
+    final request = await getPokedexUseCase(GetPokedex(limit, offset));
     request.fold(
       (error) {
         emit(PokedexState.error(error.message));

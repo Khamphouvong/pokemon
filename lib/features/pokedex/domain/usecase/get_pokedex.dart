@@ -6,12 +6,12 @@ import 'package:pokemon/features/pokedex/domain/entities/pokedex.dart';
 import 'package:pokemon/features/pokedex/domain/repositories/pokedex_repository.dart';
 
 @lazySingleton
-class GetPokedexUseCase implements UseCase<Pokedex, HaveParams> {
+class GetPokedexUseCase implements UseCase<Pokedex, GetPokedex> {
   final PokedexRepository repository;
   GetPokedexUseCase(this.repository);
 
   @override
-  Future<Either<Failure, Pokedex>> call(HaveParams haveParams) async {
-    return await repository.getPokedex(haveParams.limit, haveParams.offset);
+  Future<Either<Failure, Pokedex>> call(GetPokedex getPokedex) async {
+    return await repository.getPokedex(getPokedex.limit, getPokedex.offset);
   }
 }

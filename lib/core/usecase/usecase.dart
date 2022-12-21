@@ -11,11 +11,11 @@ class NoParams extends Equatable {
   List<Object> get props => [];
 }
 
-class HaveParams extends Equatable {
+class GetPokedex extends Equatable {
   final int limit;
   final int offset;
 
-  const HaveParams(this.limit, this.offset);
+  const GetPokedex(this.limit, this.offset);
 
   @override
   List<Object> get props => [limit, offset];
