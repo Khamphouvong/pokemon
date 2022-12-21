@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemon/core/utils/string_extension.dart';
 import 'package:pokemon/features/pokedex/domain/entities/pokedex.dart';
 import 'package:pokemon/features/pokedex/presentation/cubit/pokedex_cubit.dart';
+import 'package:pokemon/features/pokedex/presentation/screens/widgets/image_widget.dart';
 
 class PokedexSceen extends StatelessWidget {
   const PokedexSceen({super.key});
@@ -25,7 +27,14 @@ class PokedexSceen extends StatelessWidget {
                     Result pokedexList = pokedex.resultEntity[index];
                     return Column(
                       children: [
-                        Text(pokedexList.nameEntity),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            ImageWidget(index: index),
+                            Text(pokedexList.nameEntity.capitalize()),
+                            Text('${index + 1}'),
+                          ],
+                        ),
                         const Divider(),
                       ],
                     );
