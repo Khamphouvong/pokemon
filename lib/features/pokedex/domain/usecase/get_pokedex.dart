@@ -7,11 +7,12 @@ import 'package:pokemon/features/pokedex/domain/repositories/pokedex_repository.
 
 @lazySingleton
 class GetPokedexUseCase implements UseCase<Pokedex, GetPokedex> {
-  final PokedexRepository repository;
-  GetPokedexUseCase(this.repository);
+  final PokedexRepository pokedexRepository;
+  GetPokedexUseCase(this.pokedexRepository);
 
   @override
   Future<Either<Failure, Pokedex>> call(GetPokedex getPokedex) async {
-    return await repository.getPokedex(getPokedex.limit, getPokedex.offset);
+    return await pokedexRepository.getPokedex(
+        getPokedex.limit, getPokedex.offset);
   }
 }
