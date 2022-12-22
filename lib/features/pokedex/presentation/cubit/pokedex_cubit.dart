@@ -26,4 +26,17 @@ class PokedexCubit extends Cubit<PokedexState> {
       ),
     );
   }
+
+  Future<void> getPokedexMore(int limit, int offset) async {
+    emit(const PokedexState.loading());
+    final request = await getPokedexUseCase(GetPokedex(limit, offset + 10));
+    request.fold(
+      (error) {
+        emit(PokedexState.error(error.message));
+      },
+      (pokedex) => emit(
+        PokedexState.loaded(pokedex),
+      ),
+    );
+  }
 }
