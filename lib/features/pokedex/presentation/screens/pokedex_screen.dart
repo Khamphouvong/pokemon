@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon/core/configs/DI/config_dependencies.dart';
-import 'package:pokemon/core/utils/string_extension.dart';
 import 'package:pokemon/features/pokedex/domain/entities/pokedex.dart';
 import 'package:pokemon/features/pokedex/presentation/cubit/pokedex_cubit.dart';
-import 'package:pokemon/features/pokedex/presentation/screens/widgets/image_widget.dart';
 import 'package:pokemon/features/pokedex/presentation/screens/widgets/pokemon_list.dart';
 
 class PokedexSceen extends StatefulWidget {
