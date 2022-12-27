@@ -15,8 +15,10 @@ class PokemonList extends StatelessWidget {
     return ListView.builder(
         controller: scrollController
           ..addListener(() {
-            if (scrollController.offset ==
-                scrollController.position.maxScrollExtent) {
+            double maxScroll = scrollController.position.maxScrollExtent;
+            double currentScroll = scrollController.position.pixels;
+            double delta = MediaQuery.of(context).size.height * 0.20;
+            if (maxScroll - currentScroll <= delta) {
               context.read<PokedexCubit>().getPokedexMore(10, 0);
             }
           }),

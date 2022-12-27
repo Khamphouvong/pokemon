@@ -36,6 +36,9 @@ class _PokedexSceenState extends State<PokedexSceen> {
                   .showSnackBar(const SnackBar(content: Text("Loading")));
             }), loaded: (pokedex) {
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            }, error: (message) {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(message)));
             }, orElse: () {
               const SizedBox.shrink();
             });
