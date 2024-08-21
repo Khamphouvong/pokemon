@@ -27,12 +27,12 @@ class _PokedexSceenState extends State<PokedexSceen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(),
         backgroundColor: Colors.white,
         body: BlocConsumer<PokedexCubit, PokedexState>(
           listener: (context, state) {
             state.maybeWhen(error: (message) {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text(message)));
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
             }, orElse: () {
               const SizedBox.shrink();
             });
