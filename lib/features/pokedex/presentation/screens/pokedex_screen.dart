@@ -28,15 +28,9 @@ class _PokedexSceenState extends State<PokedexSceen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(),
         body: BlocConsumer<PokedexCubit, PokedexState>(
           listener: (context, state) {
-            state.maybeWhen(loading: (() {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(const SnackBar(content: Text("Loading")));
-            }), loaded: (pokedex) {
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            }, error: (message) {
+            state.maybeWhen(error: (message) {
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(message)));
             }, orElse: () {
@@ -52,6 +46,14 @@ class _PokedexSceenState extends State<PokedexSceen> {
                   : PokemonList(
                       scrollController: _scrollController,
                       pokemonList: _pokemonList,
+                      loading: const SliverToBoxAdapter(
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: 40),
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        ),
+                      ),
                     );
             }, loaded: ((pokedex) {
               _pokemonList.addAll(pokedex.resultEntity);
